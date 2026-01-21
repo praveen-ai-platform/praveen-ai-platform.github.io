@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Praveen | Platform Reliability & Observability Engineer</title>
+
+  <style>
+    :root{
+      --bg: #070b14;
+      --card: rgba(255,255,255,0.04);
+      --card2: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.08);
+
+      --text: #eaf1ff;
+      --muted: rgba(234,241,255,0.72);
+
+      --accent: #7aa2ff;
+      --accent2: #41d7b7;
+      --warn: #f8d66d;
+
+      --shadow: 0 16px 40px rgba(0,0,0,0.45);
+      --radius: 18px;
+    }
+
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 520px at 15% -10%, rgba(122,162,255,0.35), transparent 55%),
+        radial-gradient(900px 520px at 95% 8%, rgba(65,215,183,0.22), transparent 55%),
+        radial-gradient(800px 440px at 50% 110%, rgba(248,214,109,0.08), transparent 55%),
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    a{ color: var(--accent); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .container{
+      width: min(1160px, 92%);
+      margin: 0 auto;
+      padding: 18px 0 70px;
+    }
+
+    /* NAV */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      padding: 14px 0;
+      backdrop-filter: blur(12px);
+      background: rgba(7,11,20,0.62);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .brand .dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 5px rgba(122,162,255,0.12);
+    }
+
+    .navlinks{
+      display:flex;
+      gap:14px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .navlinks a{ color: var(--muted); }
+    .navlinks a:hover{ color: var(--text); }
+
+    /* HERO */
+    .hero{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 920px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--card), var(--card2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .title{
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: -0.6px;
+      margin: 0;
+    }
+
+    .roleLine{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14.5px;
+    }
+
+    .subtitle{
+      color: var(--muted);
+      margin: 12px 0 0;
+      font-size: 14.5px;
+    }
+
+    .badges{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .badge{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .cta{
+      margin-top: 18px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight: 800;
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      cursor: pointer;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #06121c;
+      border: none;
+    }
+    .btn:hover{ filter: brightness(1.08); }
+
+    .miniGrid{
+      display:grid;
+      gap: 10px;
+    }
+    .mini{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .mini .k{
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .mini .v{
+      font-weight: 800;
+      font-size: 14px;
+      word-break: break-word;
+    }
+
+    section{ margin-top: 18px; }
+
+    .sectionTitle{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin: 0 0 12px;
+    }
+
+    .icon{
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      border: 1px solid var(--border);
+      background: rgba(122,162,255,0.12);
+    }
+
+    .sectionTitle h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+    }
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    @media (max-width: 920px){
+      .grid2{ grid-template-columns: 1fr; }
+    }
+
+    ul{
+      margin: 8px 0 0 18px;
+      padding: 0;
+      color: var(--muted);
+    }
+    li{ margin-bottom: 8px; }
+
+    .pill{
+      display:inline-block;
+      margin: 6px 6px 0 0;
+      font-size: 12px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--muted);
+    }
+
+    .divider{
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0;
+    }
+
+    /* Timeline */
+    .timeline{
+      position: relative;
+      padding-left: 24px;
+      margin-top: 12px;
+    }
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left: 8px;
+      top: 2px;
+      bottom: 2px;
+      width: 2px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 999px;
+    }
+    .tItem{
+      position: relative;
+      padding: 12px 14px 12px 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.30);
+    }
+    .tItem::before{
+      content:"";
+      position:absolute;
+      left: -22px;
+      top: 18px;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 6px rgba(122,162,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+    }
+    .tTop{
+      display:flex;
+      gap: 10px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items:flex-start;
+    }
+    .tTop h3{
+      margin:0;
+      font-size: 15px;
+      letter-spacing: 0.2px;
+    }
+    .tMeta{
+      font-size: 12.5px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .tDesc{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .tTags{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tTag{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .projectCard{
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .projectCard h3{ margin:0 0 6px; font-size: 14.5px; }
+    .projectCard p{ margin: 0; color: var(--muted); font-size: 13.5px; }
+    .projectLinks{
+      margin-top: 10px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .footer{
+      margin-top: 28px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- NAV -->
+    <div class="nav">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Praveen</span>
+      </div>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#strengths">Strengths</a>
+        <a href="#skills">Tool Stack</a>
+        <a href="#experience">Timeline</a>
+        <a href="#projects">Portfolio</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#awards">Awards</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card">
+        <h1 class="title">Senior SRE / DevOps / AIOps Engineer / GenAI & MLOps</h1>
+        <div class="roleLine">
+          Observability & AIOps • GenAI (RAG) & MLOps Exposure • AWS • Terraform • Jenkins
+        </div>
+
+        <p class="subtitle">
+          11+ years of enterprise experience delivering reliability-first operations, observability engineering,
+          and automation across critical systems. Strong expertise in Sumo Logic, Splunk, Grafana/Prometheus,
+          Dynatrace, and Glassbox with AWS monitoring coverage for EKS, Lambda, Batch, EC2, S3.
+        </p>
+
+        <div class="badges">
+          <span class="badge">Platform Reliability</span>
+          <span class="badge">Observability Engineering</span>
+          <span class="badge">AIOps Enablement</span>
+          <span class="badge">Terraform (IaC)</span>
+          <span class="badge">Jenkins / CI-CD</span>
+          <span class="badge">GenAI (RAG) Exposure</span>
+          <span class="badge">MLOps / SageMaker Exposure</span>
+          <span class="badge">PII Remediation (Comprehend aligned)</span>
+        </div>
+
+        <div class="cta">
+          <a class="btn primary" href="#contact">📩 Contact</a>
+          <a class="btn" href="#experience">🧭 Timeline</a>
+          <a class="btn" href="#projects">🧪 Portfolio</a>
+          <a class="btn" href="resume.pdf" download>⬇️ Download Resume</a>
+        </div>
+      </div>
+
+      <div class="card miniGrid">
+        <div class="mini">
+          <div class="k">Email</div>
+          <div class="v">praveen.ai.platform@gmail.com</div>
+        </div>
+        <div class="mini">
+          <div class="k">Phone</div>
+          <div class="v">+91-9392981851</div>
+        </div>
+        <div class="mini">
+          <div class="k">Location</div>
+          <div class="v">India</div>
+        </div>
+        <div class="mini">
+          <div class="k">Website</div>
+          <div class="v"><a href="#">www.praveen-ai-platform.github.io</a></div>
+        </div>
+        <div class="mini">
+          <div class="k">GitHub</div>
+          <div class="v"><a href="#">YOUR_GITHUB_LINK_HERE</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="card">
+        <div class="sectionTitle">
+          <div class="icon">🧾</div>
+          <h2>Professional Summary</h2>
+        </div>
+
+        <p class="subtitle" style="margin:0;">
+          Senior Platform Reliability Engineer with 11+ years of enterprise IT experience specializing in production reliability,
+          observability engineering, incident triage, and infrastructure automation. Strong expertise in building actionable dashboards
+          and alerts using Sumo Logic, Splunk, Grafana/Prometheus, Dynatrace, and Glassbox, and monitoring AWS platforms including EKS,
+          Lambda, Batch, EC2, and S3. Experienced in Terraform-based automation (IaC) and CI/CD enablement using Jenkins and Ansible.
+          Hands-on exposure to AIOps-aligned operational patterns such as anomaly detection, signal correlation, alert noise reduction,
+          and guided troubleshooting to improve operational response and reduce MMTR. Additionally, worked on GenAI (RAG-aligned workflows)
+          and MLOps practices including model deployment and monitoring on AWS SageMaker, enabling faster troubleshooting through log
+          summarization, knowledge-grounded retrieval, and secure PII remediation using Amazon Comprehend.
+        </p>
+      </div>
+    </section>
+
+    <!-- STRENGTHS -->
+    <section id="strengths">
+      <div class="grid2">
+        <div class="card">
+          <div class="sectionTitle">
+            <div class="icon">⭐</div>
+            <h2>What Sets Me Apart</h2>
+          </div>
+          <ul>
+            <li>High-ownership individual contributor with end-to-end execution across monitoring design, automation, troubleshooting, and enablement.</li>
+            <li>Rapid self-learner who independently adopted and delivered enterprise solutions using Jenkins, Terraform, Sumo Logic, Grafana/Prometheus, Dynatrace, Glassbox, and Splunk.</li>
+            <li>Proactive mindset focused on early detection, actionable alerting, and operational excellence to reduce repeat incidents and improve reliability.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="sectionTitle">
+            <div class="icon">💡</div>
+            <h2>Core Strengths</h2>
+          </div>
+          <ul>
+            <li><b>Platform Reliability & Operations:</b> incident triage, RCA, proactive monitoring, MMTR reduction</li>
+            <li><b>Observability Engineering:</b> dashboards + alert engineering across logs & metrics</li>
+            <li><b>AIOps Enablement:</b> anomaly detection mindset, noise reduction, correlation-driven triage</li>
+            <li><b>Automation & Delivery:</b> Jenkins CI/CD, Ansible automation, infrastructure as code</li>
+            <li><b>GenAI (RAG) Exposure:</b> retrieval grounding, log summarization, troubleshooting assist patterns</li>
+            <li><b>MLOps Exposure:</b> AWS SageMaker deployment and monitoring practices</li>
+            <li><b>Security & Privacy:</b> PII identification and remediation (Amazon Comprehend aligned)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="card">
+        <div class="sectionTitle">
+          <div class="icon">🧰</div>
+          <h2>Tool Stack / Technical Skills</h2>
+        </div>
+
+        <div>
+          <span class="pill">AWS</span>
+          <span class="pill">Azure</span>
+          <span class="pill">EKS</span>
+          <span class="pill">Lambda</span>
+          <span class="pill">Batch</span>
+          <span class="pill">EC2</span>
+          <span class="pill">S3</span>
+          <span class="pill">CloudWatch</span>
+          <span class="pill">CloudTrail</span>
+          <span class="pill">SNS</span>
+          <span class="pill">Terraform</span>
+          <span class="pill">CloudFormation</span>
+          <span class="pill">Jenkins</span>
+          <span class="pill">Ansible</span>
+          <span class="pill">Docker</span>
+          <span class="pill">Kubernetes</span>
+          <span class="pill">Sumo Logic</span>
+          <span class="pill">Splunk</span>
+          <span class="pill">Dynatrace</span>
+          <span class="pill">Grafana</span>
+          <span class="pill">Prometheus</span>
+          <span class="pill">Glassbox</span>
+          <span class="pill">ServiceNow</span>
+          <span class="pill">Jira</span>
+          <span class="pill">Confluence</span>
+          <span class="pill">Tomcat</span>
+          <span class="pill">Nginx</span>
+          <span class="pill">Apache</span>
+          <span class="pill">JSON</span>
+          <span class="pill">YAML</span>
+          <span class="pill">Shell/Bash</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE (TIMELINE) -->
+    <section id="experience">
+      <div class="card">
+        <div class="sectionTitle">
+          <div class="icon">🧭</div>
+          <h2>Career Timeline</h2>
+        </div>
+
+        <div class="timeline">
+
+          <div class="tItem">
+            <div class="tTop">
+              <h3>Ameriprise Financial — Senior Platform Reliability Engineer</h3>
+              <div class="tMeta">Mar 2023 – Present • India</div>
+            </div>
+            <div class="tDesc">
+              Observability, AIOps enablement, AWS monitoring coverage, Terraform automation, GenAI/RAG + MLOps exposure,
+              and PII remediation (Amazon Comprehend aligned).
+            </div>
+            <ul>
+              <li>Owned and enhanced enterprise observability strategy using Sumo Logic, Grafana/Prometheus, Dynatrace, Glassbox, and Splunk to improve production stability.</li>
+              <li>Built AWS monitoring coverage for EKS, Lambda, Batch, EC2, and S3 across logs and metrics, enabling proactive detection and faster incident response.</li>
+              <li>Delivered AIOps-aligned improvements including anomaly detection, alert noise reduction, correlation-driven triage, and actionable signal enhancements.</li>
+              <li>Implemented Terraform-based automation to provision and manage Sumo Logic monitors consistently across environments using IaC best practices.</li>
+              <li>Implemented GenAI-driven operational workflows such as log summarization, error grouping, and guided troubleshooting patterns to support faster triage.</li>
+              <li>Implemented PII identification and remediation workflows using Amazon Comprehend aligned patterns to detect sensitive entities in logs and enable masking/removal.</li>
+            </ul>
+            <div class="tTags">
+              <span class="tTag">Sumo Logic</span>
+              <span class="tTag">Splunk</span>
+              <span class="tTag">Dynatrace</span>
+              <span class="tTag">Grafana/Prometheus</span>
+              <span class="tTag">Terraform</span>
+              <span class="tTag">AIOps</span>
+              <span class="tTag">GenAI (RAG)</span>
+              <span class="tTag">SageMaker</span>
+            </div>
+          </div>
+
+          <div class="tItem">
+            <div class="tTop">
+              <h3>DXC Technology — DevOps / Reliability Engineer</h3>
+              <div class="tMeta">Jul 2014 – Mar 2023</div>
+            </div>
+            <div class="tDesc">
+              Built CI/CD automation, container & Kubernetes deployments, governance and release standardization across enterprise clients.
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="tTop">
+              <h3>Client: London Markets — DevOps / Site Reliability Engineer</h3>
+              <div class="tMeta">Jun 2019 – Mar 2023</div>
+            </div>
+            <ul>
+              <li>Built and maintained robust CI/CD pipelines using Jenkins for continuous integration and automated deployments across environments.</li>
+              <li>Led Jenkins enablement through governance controls: RBAC, auditing, notifications, and pipeline standardization.</li>
+              <li>Containerized services using Docker and supported Kubernetes deployments via YAML manifests.</li>
+              <li>Integrated SonarQube + JUnit to enforce quality gates and shift-left practices.</li>
+              <li>Managed Nexus repositories for artifact management and repeatable release packaging.</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <div class="tTop">
+              <h3>Client: Procter & Gamble (P&G) — DevOps Engineer</h3>
+              <div class="tMeta">Nov 2017 – Jun 2019</div>
+            </div>
+            <ul>
+              <li>Owned Jenkins pipeline configurations, access controls, and troubleshooting across delivery teams.</li>
+              <li>Installed and configured Jenkins plugins and build automation for Java CI workflows.</li>
+              <li>Automated Docker image build and publishing workflows to support container deployments.</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <div class="tTop">
+              <h3>Client: Verisign / Symantec — Software Engineer</h3>
+              <div class="tMeta">Jul 2014 – Nov 2017</div>
+            </div>
+            <ul>
+              <li>Supported Oracle application maintenance and production issue resolution, including change requests and defect fixes.</li>
+              <li>Performed RCA for production-impacting issues and drove resolution via vendor case management.</li>
+              <li>Partnered with Informatica teams to analyze and fix data issues across integration processes.</li>
+            </ul>
+
+            <div class="tTags">
+              <span class="tTag">Jenkins</span>
+              <span class="tTag">Docker</span>
+              <span class="tTag">Kubernetes</span>
+              <span class="tTag">SonarQube</span>
+              <span class="tTag">Nexus</span>
+              <span class="tTag">Git</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="projects">
+      <div class="card">
+        <div class="sectionTitle">
+          <div class="icon">🧪</div>
+          <h2>Portfolio</h2>
+        </div>
+
+        <div class="grid2">
+          <div class="projectCard">
+            <h3>RAG Incident Assistant (FastAPI) — GenAI/RAG</h3>
+            <p>
+              Built a lightweight RAG-style assistant to retrieve relevant runbook/incident knowledge and provide grounded
+              troubleshooting suggestions for faster triage.
+            </p>
+            <div class="projectLinks">
+              <a class="btn" href="YOUR_PROJECT1_GITHUB_LINK_HERE">💻 GitHub Repo</a>
+            </div>
+          </div>
+
+          <div class="projectCard">
+            <h3>PII Detection & Remediation Pipeline (Amazon Comprehend aligned)</h3>
+            <p>
+              Implemented a privacy-aware log processing pipeline that detects PII entities and masks/remediates sensitive values
+              before sending data to observability platforms.
+            </p>
+            <div class="projectLinks">
+              <a class="btn" href="YOUR_PROJECT2_GITHUB_LINK_HERE">💻 GitHub Repo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="cta">
+          <a class="btn primary" href="resume.pdf" download>⬇️ Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications">
+      <div class="card">
+        <div class="sectionTitle">
+          <div class="icon">📜</div>
+          <h2>Certifications</h2>
+        </div>
+        <ul>
+          <li>AWS Certified AI Practitioner</li>
+          <li>AWS Machine Learning Associate</li>
+          <li>AWS Certified Solutions Architect – Associate</li>
+          <li>Terraform Certified Associate</li>
+          <li>NVIDIA Certified Associate AI Infrastructure Ops</li>
+          <li>Sumo Logic: Search Mastery, Metrics Mastery, Observability Fundamentals</li>
+          <li>Glassbox Certified Proficient</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- AWARDS -->
+    <section id="awards">
+      <div class="card">
+        <div class="sectionTitle">
+          <div class="icon">🏆</div>
+          <h2>Awards & Recognition</h2>
+        </div>
+        <ul>
+          <li>Ameriprise Financial: Multiple AMMY Awards + Special AMMY Gold Award</li>
+          <li>HP / HPE / DXC: Spot awards + Top performer recognition + reward points/shares</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="card">
+        <div class="sectionTitle">
+          <div class="icon">🎓</div>
+          <h2>Education</h2>
+        </div>
+        <ul>
+          <li>B.Tech — Jawaharlal Nehru Technological University, Andhra Pradesh, India</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="card">
+        <div class="sectionTitle">
+          <div class="icon">📩</div>
+          <h2>Contact</h2>
+        </div>
+
+        <p class="subtitle" style="margin-top:0;">
+          Open to opportunities in <b>Platform Reliability / Observability / AIOps</b> and roles involving
+          <b>GenAI (RAG) and MLOps operationalization</b>.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="mailto:praveen.ai.platform@gmail.com">📧 Email Me</a>
+          <a class="btn" href="tel:+919392981851">📞 Call</a>
+          <a class="btn" href="resume.pdf" download>⬇️ Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="year"></span> Praveen • Built for Platform Reliability / Observability / AIOps roles
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
